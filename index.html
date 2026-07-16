@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohamed Shalapy — Front-End Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --white: #ffffff;
+        --bg: #fafafa;
+        --text: #111111;
+        --muted: #666666;
+        --light: #999999;
+        --border: #eeeeee;
+        --accent: #111111;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: var(--white);
+        color: var(--text);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 40px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: -0.3px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 120px 40px 80px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .hero-content {
+        max-width: 640px;
+      }
+
+      .hero-label {
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--light);
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 6vw, 64px);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -2px;
+        color: var(--text);
+        margin-bottom: 24px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: var(--muted);
+        line-height: 1.8;
+        max-width: 480px;
+      }
+
+      .hero-links {
+        margin-top: 40px;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .hero-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        padding: 12px 24px;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        transition: all 0.2s;
+      }
+
+      .hero-links a:hover {
+        background: var(--text);
+        color: var(--white);
+        border-color: var(--text);
+      }
+
+      .hero-links a.primary {
+        background: var(--text);
+        color: var(--white);
+        border-color: var(--text);
+      }
+
+      .hero-links a.primary:hover {
+        background: transparent;
+        color: var(--text);
+      }
+
+      /* ── SECTIONS ── */
+      section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 100px 40px;
+      }
+
+      .section-label {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--light);
+        margin-bottom: 48px;
+      }
+
+      /* ── PROJECTS ── */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+        gap: 24px;
+      }
+
+      .project-card {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .project-card:hover {
+        border-color: #ccc;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      }
+
+      .project-card .date {
+        font-size: 12px;
+        color: var(--light);
+        margin-bottom: 16px;
+      }
+
+      .project-card h3 {
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        margin-bottom: 16px;
+        color: var(--text);
+      }
+
+      .project-card p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 24px;
+      }
+
+      .project-card .tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .project-card .tech span {
+        font-size: 12px;
+        font-weight: 500;
+        padding: 6px 14px;
+        background: var(--bg);
+        border-radius: 100px;
+        color: var(--muted);
+      }
+
+      /* ── SKILLS ── */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 48px;
+      }
+
+      .skill-group h4 {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--light);
+        margin-bottom: 16px;
+      }
+
+      .skill-group ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .skill-group li {
+        font-size: 15px;
+        color: var(--text);
+        font-weight: 400;
+      }
+
+      /* ── ABOUT ── */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+
+      .about-text {
+        font-size: 18px;
+        color: var(--muted);
+        line-height: 1.9;
+      }
+
+      .about-details {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .about-detail-item h4 {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--light);
+        margin-bottom: 8px;
+      }
+
+      .about-detail-item p {
+        font-size: 15px;
+        color: var(--text);
+      }
+
+      /* ── CONTACT ── */
+      .contact-content {
+        text-align: center;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .contact-content h2 {
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 700;
+        letter-spacing: -1.5px;
+        margin-bottom: 16px;
+      }
+
+      .contact-content p {
+        font-size: 16px;
+        color: var(--muted);
+        margin-bottom: 40px;
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .contact-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        padding: 14px 28px;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        transition: all 0.2s;
+      }
+
+      .contact-links a:hover {
+        background: var(--text);
+        color: var(--white);
+        border-color: var(--text);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      footer span {
+        font-size: 13px;
+        color: var(--light);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 768px) {
+        .nav-inner {
+          padding: 0 24px;
+        }
+        .nav-links {
+          gap: 20px;
+        }
+
+        .hero {
+          padding: 120px 24px 60px;
+        }
+
+        section {
+          padding: 60px 24px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+
+        footer {
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
+          padding: 40px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">MS.</a>
+        <ul class="nav-links">
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-label">Front-End Engineer</div>
+        <h1>Mohamed Shalapy</h1>
+        <p>
+          Turning complex requirements into fast, maintainable UIs. Specialized
+          in e-commerce and edtech platforms.
+        </p>
+        <div class="hero-links">
+          <a href="#projects" class="primary">View Work →</a>
+          <a href="#contact">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-label">Selected Work</div>
+      <div class="projects-grid">
+        <a
+          href="https://my-first-angular-app-rho.vercel.app/"
+          target="_blank"
+          class="project-card"
+          style="text-decoration: none; color: inherit; display: block"
+        >
+          <img
+            src="image.png"
+            alt="Lumina Studio"
+            style="
+              width: 100%;
+              height: 220px;
+              object-fit: cover;
+              border-radius: 10px;
+              margin-bottom: 24px;
+            "
+          />
+          <div class="date">2026 — Present</div>
+          <h3>Lumina Studio</h3>
+          <p>
+            E-commerce platform for studio gear — bilingual UI, local payments,
+            editorial product storytelling, and an admin dashboard for inventory
+            and orders.
+          </p>
+          <div class="tech">
+            <span>Angular 21</span>
+            <span>Supabase</span>
+            <span>Tailwind CSS v4</span>
+          </div>
+        </a>
+
+        <a
+          href="https://edu-stream-sooty.vercel.app"
+          target="_blank"
+          class="project-card"
+          style="text-decoration: none; color: inherit; display: block"
+        >
+          <img
+            src="image copy.png"
+            alt="EduStream"
+            style="
+              width: 100%;
+              height: 220px;
+              object-fit: cover;
+              border-radius: 10px;
+              margin-bottom: 24px;
+            "
+          />
+          <div class="date">2026 — Present</div>
+          <h3>EduStream</h3>
+          <p>
+            Egyptian e-learning platform with curated courses, Vodafone Cash
+            payments, and a premium scholarly UX that converts learners into
+            subscribers.
+          </p>
+          <div class="tech">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>RTK</span>
+            <span>React Query</span>
+            <span>Appwrite</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-label">About</div>
+      <div class="about-content">
+        <div class="about-text">
+          Front-end engineer who turns complex requirements into fast,
+          maintainable UIs. Focused on clean code, performance, and user
+          experience.
+        </div>
+        <div class="about-details">
+          <div class="about-detail-item">
+            <h4>Education</h4>
+            <p>B.Sc. in Space Navigation — BNS<br />Sept 2022 — June 2027</p>
+          </div>
+          <div class="about-detail-item">
+            <h4>Languages</h4>
+            <p>Arabic — Native<br />English — Professional</p>
+          </div>
+          <div class="about-detail-item">
+            <h4>Based in</h4>
+            <p>Egypt</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-label">Skills</div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Frontend</h4>
+          <ul>
+            <li>Angular</li>
+            <li>React</li>
+            <li>TypeScript</li>
+            <li>JavaScript</li>
+            <li>HTML / CSS</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>State Management</h4>
+          <ul>
+            <li>NGRX</li>
+            <li>Redux Toolkit</li>
+            <li>React Query</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Styling</h4>
+          <ul>
+            <li>Tailwind CSS</li>
+            <li>Responsive Design</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Tools</h4>
+          <ul>
+            <li>Git / GitHub</li>
+            <li>Supabase</li>
+            <li>Appwrite</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact-content">
+        <h2>Let's work together</h2>
+        <p>Have a project in mind? I'd love to hear about it.</p>
+        <div class="contact-links">
+          <a href="mailto:mohamedshalapy7919@gmail.com">✉ Email</a>
+          <a href="https://github.com/MohamedShalapy204" target="_blank"
+            >GitHub</a
+          >
+          <a
+            href="https://www.linkedin.com/in/mohamed-shalapy-4880b0287/"
+            target="_blank"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© 2026 Mohamed Shalapy</span>
+      <span>Built with care</span>
+    </footer>
+  </body>
+</html>
