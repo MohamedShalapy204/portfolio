@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mohamed Shalapy — Front-End Engineer</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="180x180" href="favicon.png" />
+    <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -107,15 +110,6 @@
 
       .hero-content {
         max-width: 640px;
-      }
-
-      .hero-photo {
-        width: 140px;
-        height: 140px;
-        object-fit: cover;
-        border-radius: 50%;
-        margin-bottom: 32px;
-        border: 1px solid var(--border);
       }
 
       .hero-label {
@@ -254,6 +248,162 @@
         background: var(--bg);
         border-radius: 100px;
         color: var(--muted);
+      }
+
+      .project-links {
+        margin-top: 24px;
+        display: flex;
+        gap: 20px;
+      }
+
+      .project-links a {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2px;
+        transition: border-color 0.2s;
+      }
+
+      .project-links a:hover {
+        border-color: var(--text);
+      }
+
+      /* ── EXPERIENCE ── */
+      .experience-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .experience-item {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .experience-item .stretched-link::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 16px;
+      }
+
+      .experience-item .hrms-gallery a,
+      .experience-item .project-links a {
+        position: relative;
+        z-index: 1;
+      }
+
+      .experience-item:hover {
+        border-color: #ccc;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      }
+
+      .experience-item h3 {
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+        color: var(--text);
+      }
+
+      .experience-meta {
+        font-size: 13px;
+        color: var(--light);
+        margin-bottom: 24px;
+      }
+
+      .experience-item ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .experience-item ul li {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.8;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .experience-item ul li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--light);
+      }
+
+      .experience-shot {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 10px;
+        margin-bottom: 24px;
+        border: 1px solid var(--border);
+      }
+
+      .experience-item .tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .experience-item .tech span {
+        font-size: 12px;
+        font-weight: 500;
+        padding: 6px 14px;
+        background: var(--bg);
+        border-radius: 100px;
+        color: var(--muted);
+      }
+
+      .hrms-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .hrms-gallery a {
+        display: block;
+        text-decoration: none;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s;
+      }
+
+      .hrms-gallery a:hover {
+        border-color: #ccc;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      }
+
+      .hrms-gallery img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+      }
+
+      .hrms-gallery span {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        padding: 10px 14px;
       }
 
       /* ── SKILLS ── */
@@ -403,6 +553,18 @@
           grid-template-columns: 1fr;
         }
 
+        .experience-item {
+          padding: 28px;
+        }
+
+        .experience-shot {
+          height: 200px;
+        }
+
+        .hrms-gallery {
+          grid-template-columns: 1fr;
+        }
+
         .about-content {
           grid-template-columns: 1fr;
           gap: 48px;
@@ -423,8 +585,9 @@
       <div class="nav-inner">
         <a href="#" class="nav-logo">MS.</a>
         <ul class="nav-links">
-          <li><a href="#projects">Work</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -434,7 +597,6 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
-        <img src="me.png" alt="Mohamed Shalapy" class="hero-photo" />
         <div class="hero-label">Front-End Engineer</div>
         <h1>Mohamed Shalapy</h1>
         <p>
@@ -442,16 +604,147 @@
           in e-commerce and edtech platforms.
         </p>
         <div class="hero-links">
-          <a href="#projects" class="primary">View Work →</a>
+          <a href="#experience" class="primary">View Work →</a>
           <a href="#contact">Get in Touch</a>
           <a href="CV.pdf" target="_blank">Download CV</a>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-label">About</div>
+      <div class="about-content">
+        <div class="about-text">
+          Frontend Engineer specializing in Angular and TypeScript, with
+          experience building reusable, responsive web applications and
+          integrating RESTful APIs. Strong focus on clean component
+          architecture, performance optimization, and maintainable UI
+          development. Experienced in Agile/Scrum environments, using Jira
+          for sprint planning, task tracking, and project collaboration.
+        </div>
+        <div class="about-details">
+          <div class="about-detail-item">
+            <h4>Education</h4>
+            <p>B.Sc. in Space Navigation — BNS<br />Sept 2022 — June 2027</p>
+          </div>
+          <div class="about-detail-item">
+            <h4>Languages</h4>
+            <p>Arabic — Native<br />English — Professional</p>
+          </div>
+          <div class="about-detail-item">
+            <h4>Based in</h4>
+            <p>Egypt</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-label">Experience</div>
+      <div class="experience-list">
+        <div class="experience-item">
+          <a
+            href="https://hr-system-rosy.vercel.app/"
+            target="_blank"
+            class="stretched-link"
+            aria-label="Open HR Management System live demo"
+          ></a>
+          <h3>Frontend Developer — Comcast</h3>
+          <div class="experience-meta">Cairo · Aug 2025 — Present</div>
+          <img
+            src="hrms/hrms.png"
+            alt="HR Management System"
+            class="experience-shot"
+          />
+          <div class="hrms-gallery">
+            <a href="hrms/hrms2.png" target="_blank">
+              <img src="hrms/hrms2.png" alt="Job Management module" />
+              <span>Job Management</span>
+            </a>
+            <a href="hrms/hrms3.png" target="_blank">
+              <img src="hrms/hrms3.png" alt="Add new job wizard" />
+              <span>Job creation wizard</span>
+            </a>
+            <a href="hrms/hrms4.png" target="_blank">
+              <img src="hrms/hrms4.png" alt="Site creation with map picker" />
+              <span>Site map picker</span>
+            </a>
+          </div>
+          <p style="font-size: 15px; color: var(--muted); line-height: 1.8">
+            Enterprise HR Management System — employee management, roles and
+            permissions, attendance, scheduling, rewards, and notifications,
+            with data-driven dashboards and JWT-based access control.
+          </p>
+          <div class="tech">
+            <span>Angular</span>
+            <span>TypeScript</span>
+            <span>RxJS</span>
+            <span>REST API</span>
+          </div>
+          <div class="project-links">
+            <a
+              href="https://hr-system-rosy.vercel.app/"
+              target="_blank"
+              >Live Demo →</a
+            >
+            <a
+              href="https://hr-system-api.runasp.net/index.html"
+              target="_blank"
+              >API Docs →</a
+            >
+          </div>
+          <ul>
+            <li>
+              Built reusable responsive Angular components for employee
+              profiles, role-based access control, attendance configuration,
+              and workforce management.
+            </li>
+            <li>
+              Integrated RESTful APIs with Angular HttpClient and handled
+              authentication with JWT-based access control.
+            </li>
+            <li>
+              Implemented dynamic scheduling with validation for
+              qualifications, shift conflicts, overtime risks, and site
+              availability.
+            </li>
+            <li>
+              Worked in Agile/Scrum with Jira for sprint planning, task
+              tracking, and delivery.
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3>Junior Frontend Developer — Dole Food Company</h3>
+          <div class="experience-meta">Remote · Jan 2025 — Aug 2025</div>
+          <ul style="margin-top: 0">
+            <li>
+              Developed responsive web interfaces with Angular, TypeScript,
+              HTML, and CSS for internal business applications.
+            </li>
+            <li>
+              Built reusable Angular components and reactive forms for
+              employee and operational workflows.
+            </li>
+            <li>
+              Integrated RESTful APIs with Angular HttpClient and managed
+              async data flows with RxJS.
+            </li>
+            <li>
+              Implemented client-side routing, form validation, and reusable
+              UI patterns for consistency and maintainability.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONAL PROJECTS -->
     <section id="projects">
-      <div class="section-label">Selected Work</div>
+      <div class="section-label">Personal Projects</div>
       <div class="projects-grid">
         <a
           href="https://my-first-angular-app-rho.vercel.app/"
@@ -486,67 +779,54 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-label">About</div>
-      <div class="about-content">
-        <div class="about-text">
-          Front-end engineer who turns complex requirements into fast,
-          maintainable UIs. Focused on clean code, performance, and user
-          experience.
-        </div>
-        <div class="about-details">
-          <div class="about-detail-item">
-            <h4>Education</h4>
-            <p>B.Sc. in Space Navigation — BNS<br />Sept 2022 — June 2027</p>
-          </div>
-          <div class="about-detail-item">
-            <h4>Languages</h4>
-            <p>Arabic — Native<br />English — Professional</p>
-          </div>
-          <div class="about-detail-item">
-            <h4>Based in</h4>
-            <p>Egypt</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- SKILLS -->
     <section id="skills">
       <div class="section-label">Skills</div>
       <div class="skills-grid">
         <div class="skill-group">
-          <h4>Frontend</h4>
+          <h4>Languages</h4>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Angular</h4>
           <ul>
             <li>Angular</li>
-            <li>React</li>
-            <li>TypeScript</li>
-            <li>JavaScript</li>
-            <li>HTML / CSS</li>
+            <li>RxJS</li>
+            <li>Signals</li>
+            <li>Reactive Forms</li>
+            <li>Router</li>
+            <li>HttpClient</li>
+            <li>REST APIs</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h4>State Management</h4>
-          <ul>
-            <li>NGRX</li>
-            <li>Redux Toolkit</li>
-            <li>React Query</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h4>Styling</h4>
+          <h4>Styling & Backend</h4>
           <ul>
             <li>Tailwind CSS</li>
-            <li>Responsive Design</li>
+            <li>Supabase</li>
+            <li>Appwrite</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h4>Tools</h4>
+          <h4>Tools & Workflow</h4>
           <ul>
-            <li>Git / GitHub</li>
-            <li>Supabase</li>
-            <li>Appwrite</li>
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Jira</li>
+            <li>Agile / Scrum</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Professional</h4>
+          <ul>
+            <li>Problem Solving</li>
+            <li>Attention to Detail</li>
+            <li>Fast Learning</li>
           </ul>
         </div>
       </div>
@@ -559,6 +839,7 @@
         <p>Have a project in mind? I'd love to hear about it.</p>
         <div class="contact-links">
           <a href="mailto:mohamedshalapy7919@gmail.com">✉ Email</a>
+          <a href="tel:+201104723206">✆ +20 110 472 3206</a>
           <a href="https://github.com/MohamedShalapy204" target="_blank"
             >GitHub</a
           >
