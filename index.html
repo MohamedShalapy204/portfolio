@@ -270,6 +270,57 @@
         border-color: var(--text);
       }
 
+      .demo-creds {
+        margin-top: 20px;
+        padding: 16px 20px;
+        background: var(--text);
+        border-radius: 12px;
+        font-size: 13px;
+        color: #bbbbbb;
+        line-height: 2.1;
+      }
+
+      .demo-creds strong {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 6px;
+      }
+
+      .demo-creds strong::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        flex-shrink: 0;
+      }
+
+      .demo-creds code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        font-size: 13px;
+        padding: 3px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .demo-creds code:hover {
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .demo-creds code.copied {
+        background: #22c55e;
+      }
+
       /* ── EXPERIENCE ── */
       .experience-list {
         display: flex;
@@ -296,7 +347,8 @@
       }
 
       .experience-item .hrms-gallery a,
-      .experience-item .project-links a {
+      .experience-item .project-links a,
+      .experience-item .demo-creds {
         position: relative;
         z-index: 1;
       }
@@ -695,6 +747,11 @@
               >API Docs →</a
             >
           </div>
+          <div class="demo-creds">
+            <strong>Demo login · click to copy</strong>
+            Email: <code>employee_1@buy2hrms.com</code><br />
+            Password: <code>12345678</code>
+          </div>
           <ul>
             <li>
               Built reusable responsive Angular components for employee
@@ -774,6 +831,11 @@
             <span>Angular 21</span>
             <span>Supabase</span>
             <span>Tailwind CSS v4</span>
+          </div>
+          <div class="demo-creds">
+            <strong>Demo login · click to copy</strong>
+            Email: <code>mohamedshalapy7919@gmail.com</code><br />
+            Password: <code>12345678</code>
           </div>
         </a>
       </div>
@@ -857,5 +919,37 @@
       <span>© 2026 Mohamed Shalapy</span>
       <span>Built with care</span>
     </footer>
+
+    <script>
+      document.querySelectorAll(".demo-creds code").forEach(function (el) {
+        el.title = "Click to copy";
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var value = el.textContent;
+          function done() {
+            el.classList.add("copied");
+            el.textContent = "Copied!";
+            setTimeout(function () {
+              el.textContent = value;
+              el.classList.remove("copied");
+            }, 1200);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(value).then(done, done);
+          } else {
+            var ta = document.createElement("textarea");
+            ta.value = value;
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand("copy");
+            } catch (err) {}
+            document.body.removeChild(ta);
+            done();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
